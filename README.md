@@ -1,6 +1,21 @@
 # repro-numbers
 
-This starter full stack project has been generated using AlgoKit. See below for default getting started instructions.
+## Repro
+
+In vitest, when puya ts transformer is loaded, division breaks: `3/2 == 1`
+
+```
+cd projects/repro-numbers-contracts
+npm i
+npm run test
+```
+
+Test passes without puya transformer:
+
+```
+# as above
+npm run test -- --config vitest.config-nopuya.mts
+```
 
 ## Setup
 
