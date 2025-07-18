@@ -1,14 +1,9 @@
-import { TestExecutionContext } from '@algorandfoundation/algorand-typescript-testing'
 import { describe, expect, it } from 'vitest'
-import { Repro } from './contract.algo'
 
 describe('Repro contract', () => {
-  const ctx = new TestExecutionContext()
-  it('Logs the returned value when sayHello is called', () => {
-    const contract = ctx.contract.create(Repro)
-
-    const result = contract.hello('Sally')
-
-    expect(result).toBe('Hello, Sally')
+  it('Knows arithmetic', () => {
+    expect(1.5).toBe(1.5)
+    expect(1.4 * 2).toBe(2.8)
+    expect(3 / 2).toBeCloseTo(1.5) // fails: 3 / 2 == 1 when puya-ts-transformer is enabled
   })
 })
