@@ -14,9 +14,9 @@ export default defineConfig({
   plugins: [
     typescript({
       tsconfig: './tsconfig.test.json',
-      transformers: {
-        // before: [puyaTsTransformer],
-      },
+      // transformers: {
+      //   before: [puyaTsTransformer],
+      // },
     }),
   ],
 })
