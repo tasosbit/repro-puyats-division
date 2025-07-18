@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'docs/**'
+      - '**.md'
+      - '.vscode/**'
+      - '.idea/**'
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  repro-numbers-contracts-validate:
+    name: Run repro-numbers-contracts release
+    secrets: inherit
+    uses: ./.github/workflows/repro-numbers-contracts-ci.yaml
+
+  repro-numbers-contracts-release:
+    name: Run repro-numbers-contracts release
+    secrets: inherit
+    uses: ./.github/workflows/repro-numbers-contracts-cd.yaml
+    needs: repro-numbers-contracts-validate
+
+  repro-numbers-frontend-validate:
+    name: Run repro-numbers-frontend release
+    secrets: inherit
+    uses: ./.github/workflows/repro-numbers-frontend-ci.yaml
+
+  repro-numbers-frontend-release:
+    name: Run repro-numbers-frontend release
+    secrets: inherit
+    uses: ./.github/workflows/repro-numbers-frontend-cd.yaml
+    needs: repro-numbers-frontend-validate

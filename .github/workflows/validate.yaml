@@ -1,0 +1,14 @@
+name: Pull Request validation
+
+on: [pull_request]
+
+
+jobs:
+  repro-numbers-contracts-ci:
+    name: Run repro-numbers-contracts validation
+    uses: ./.github/workflows/repro-numbers-contracts-ci.yaml
+
+  repro-numbers-frontend-ci:
+    name: Run repro-numbers-frontend validation
+    uses: ./.github/workflows/repro-numbers-frontend-ci.yaml
+
